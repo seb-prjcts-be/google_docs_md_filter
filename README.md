@@ -19,7 +19,7 @@ The extension is not in the Chrome Web Store yet. Load it from source in Chrome,
 3. Click **Load unpacked** and choose the folder that holds `manifest.json`.
 4. Open or reload `https://docs.google.com/document/`.
 
-A button in the bottom-left corner of the home screen counts what is hidden, for example `14 .md hidden`. Click it to show the hidden files for a while; click again to hide them. [Install](https://seb-prjcts-be.github.io/google_docs_md_filter/docs/install.html) covers updating, removing and what to check when nothing happens.
+A button in the bottom-left corner of the home screen counts what is hidden, for example `14 .md hidden`. Click it and the filter pauses in every Docs tab, so the files come back; click again to hide them. [Install](https://seb-prjcts-be.github.io/google_docs_md_filter/docs/install.html) covers updating, removing and what to check when nothing happens.
 
 ## Where it runs
 
@@ -53,14 +53,14 @@ A clean zip in `dist/` for the Chrome Web Store or a GitHub release, with only `
 node scripts/pack.js
 ```
 
-The icons and the animation above are drawn by scripts:
+The icons and the animations are drawn by scripts:
 
 ```bash
 node scripts/generate-icons.js
-node scripts/generate-overview-gif.js
+node scripts/generate-gifs.js
 ```
 
-The animation asks `src/filter-core.js` which rows to hide and what the button says; the file names in it are invented. `PUBLISHING.md` has the steps for a new release.
+The animations ask `src/filter-core.js` which rows to hide and what the button says; the file names in them are invented. The Guide shows four more of them. `PUBLISHING.md` has the steps for a new release.
 
 Tested with the Node v24.16.0 test suite and on the Google Docs home screen in Chrome on Windows on 2026-10-29.
 
