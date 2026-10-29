@@ -1,87 +1,77 @@
 # MD Block for Google Docs
 
-A small Chrome extension (Manifest V3) that hides Markdown (`.md`, `.markdown`) and Microsoft Word (`.docx`, `.doc`) files from the Google Docs home screen, search autocomplete suggestions, and the `File > Open` dialog.
+![The Google Docs home screen in CGA colours; Markdown and Word files disappear one by one and a counter says 7 files hidden](docs/images/overview.gif)
 
-Synced folders in Google Drive mix external `.docx` and `.md` files into the Google Docs overview alongside native Google Docs documents. When an editor or coding tool touches dozens of `.md` files a day, or shared Drive folders hold Word archives, regular Google Docs get pushed off the screen. This extension hides matching rows visually in the browser (`display: none`). Files in Google Drive stay where they are, and zero extension code runs inside an open document editor.
+**[Open site](https://seb-prjcts-be.github.io/google_docs_md_filter/)** · **[Install](https://seb-prjcts-be.github.io/google_docs_md_filter/docs/install.html)** · **[Guide](https://seb-prjcts-be.github.io/google_docs_md_filter/docs/guide.html)** · **[Privacy](https://seb-prjcts-be.github.io/google_docs_md_filter/docs/privacy.html)**
 
-Interface labels follow your browser language (English and Dutch included via `_locales/`).
+A small Chrome extension (Manifest V3) that hides Markdown (`.md`, `.markdown`) and Microsoft Word (`.docx`, `.doc`) files from the Google Docs home screen, its search suggestions and the `File > Open` dialog.
 
-## Install from source
+Synced folders in Google Drive put every `.md` and `.docx` on the Docs home screen, next to your native documents. When a coding tool touches a few dozen Markdown files a day, the documents you wanted are a long scroll away. The extension hides those rows in the page (`display: none`). The files stay where they are in Drive, and no extension code runs inside an open document.
 
-1. Download and unzip the latest release archive from [Releases](https://github.com/seb-prjcts-be/google_docs_md_filter/releases) (or clone `https://github.com/seb-prjcts-be/google_docs_md_filter.git`).
-2. Open `chrome://extensions` in Chrome, Brave, Edge, Arc, or Vivaldi.
-3. Turn on **Developer mode** in the top-right corner.
-4. Click **Load unpacked** and select the folder containing `manifest.json`.
-5. Open or reload `https://docs.google.com/document/`.
+It is a workaround in the browser, not a way to switch off Google's integration. The **Enable Markdown** option under `Tools > Preferences` in Docs is about typing Markdown inside a document; it does not change which files the home screen lists. Current release: **0.1.0**.
 
-If you run Google Docs as an installed Chrome app (PWA), the same extension applies there too.
+## Install
 
-## What it does
+The extension is not in the Chrome Web Store yet. Load it from source in Chrome, Brave, Edge, Arc or Vivaldi:
 
-On the Google Docs home screen (`docs.google.com/document/`), `src/content.js` checks grid cards, list rows, and search autocomplete options. When a filename ends with a filtered extension, or an item carries a Markdown or Microsoft Word MIME type, icon, or badge, the element is hidden. Date sections such as *Yesterday* collapse when all items inside them are hidden, except when a section header holds sort or view controls.
+1. Download and unzip the latest zip from [Releases](https://github.com/seb-prjcts-be/google_docs_md_filter/releases), or clone `https://github.com/seb-prjcts-be/google_docs_md_filter.git`.
+2. Open `chrome://extensions` and turn on **Developer mode** in the top-right corner.
+3. Click **Load unpacked** and choose the folder that holds `manifest.json`.
+4. Open or reload `https://docs.google.com/document/`.
 
-A small button in the bottom-left corner shows how many items are hidden on the current screen (for example `14 .md hidden` or `14 .md verborgen`). Click it once to show hidden files temporarily; click again to hide them.
+A button in the bottom-left corner of the home screen counts what is hidden, for example `14 .md hidden`. Click it to show the hidden files for a while; click again to hide them. [Install](https://seb-prjcts-be.github.io/google_docs_md_filter/docs/install.html) covers updating, removing and what to check when nothing happens.
 
-Document editor URLs (`/document/d/*` and `/document/u/*/d/*`) are excluded through `exclude_matches` in `manifest.json` and checked again in `detectSurface()` inside `src/filter-core.js`. When you choose `File > Open` inside an open document, the filter runs only inside the `/picker` iframe of that dialog.
+## Where it runs
 
-## Where it runs (and where it does not)
-
-This extension targets the Google Docs document-chooser interface only, so your synced folders can stay intact in Google Drive while the Google Docs app stays reserved for native Google Docs documents.
-
-Runs on:
 - the Google Docs home screen (`docs.google.com/document/`)
-- search autocomplete suggestions at the top of the Google Docs home screen
-- the `File > Open` picker dialog when opened from Google Docs
+- the search suggestions at the top of that screen
+- the `File > Open` picker, opened from inside a document
 
-Does not run on:
-- open documents in the Google Docs editor (`docs.google.com/document/d/...`)
-- Google Drive (`drive.google.com`), where all `.md`, `.docx`, and synced folders remain visible
-- Google Sheets (`/spreadsheets/`), Google Slides (`/presentation/`), and Google Forms (`/forms/`)
-- the Google Drive attachment picker inside Gmail or other apps (you can attach `.md` and `.docx` files to emails as usual)
-- GitHub or any other website
+Not in open documents (`/document/d/...`), Google Drive, Sheets, Slides, Forms, the attachment picker in Gmail or any other website. You can still attach a `.md` to an email. [Where it runs](https://seb-prjcts-be.github.io/google_docs_md_filter/docs/guide.html#where) lists the exact addresses.
 
 ## Settings
 
-Click the **MD Block** icon in the browser toolbar to open the popup:
+Click the **MD Block** icon in the toolbar. The switch pauses or resumes the filter in every open Docs tab. Markdown and Word are hidden by default; `.txt`, `.json` / `.jsonl`, `.yaml` / `.yml`, `.toml` and `.log` can be ticked, and you can add your own, such as `tex` or `csv`. The counter button can be turned off. [Settings](https://seb-prjcts-be.github.io/google_docs_md_filter/docs/guide.html#settings).
 
-- **Filter switch**: pauses or resumes filtering across open Google Docs tabs.
-- **File types to hide**: `.md` / `.markdown` and `.docx` / `.doc` (Microsoft Word) are enabled by default. You can untick either of them, tick `.txt`, `.json` / `.jsonl`, `.yaml` / `.yml`, `.toml`, and `.log`, or add custom extensions such as `tex` or `csv`.
-- **Counter button**: shows or hides the bottom-left pill on the Google Docs home screen.
+The labels follow the browser language; English and Dutch are included in `_locales/`.
+
+## Limits
+
+The extension hides what Google has already loaded. When many `.md` files sit at the top of Recent Documents, it nudges the page up to fifteen times so older documents come into view; after hundreds of them, scroll once by hand. A native Google Doc whose title ends in `.md` is hidden too, because the title is what the extension reads. [Limits](https://seb-prjcts-be.github.io/google_docs_md_filter/docs/guide.html#limits).
 
 ## Test and package
 
-Run the test suite (requires Node.js, no external npm packages):
+The tests need Node.js and no npm packages:
 
 ```bash
 node --test test/filter.test.js
 ```
 
-Build a clean `.zip` archive in `dist/` for Chrome Web Store upload or GitHub Releases:
+A clean zip in `dist/` for the Chrome Web Store or a GitHub release, with only `manifest.json`, `_locales/`, `icons/` and `src/`:
 
 ```bash
 node scripts/pack.js
 ```
 
-Regenerate the PNG icons in `icons/`:
+The icons and the animation above are drawn by scripts:
 
 ```bash
 node scripts/generate-icons.js
+node scripts/generate-overview-gif.js
 ```
 
-## Status and limits
+The animation asks `src/filter-core.js` which rows to hide and what the button says; the file names in it are invented. `PUBLISHING.md` has the steps for a new release.
 
-Tested against the local Node v24.16.0 test suite and verified live on the Google Docs home screen in Chrome on Windows on 2026-10-29.
-
-When many `.md` files sit at the top of Recent Documents, the extension dispatches up to fifteen scroll nudges automatically so Google Docs loads older regular documents into view. If hundreds of `.md` files precede the first regular document, scroll once manually to fetch the next batch.
+Tested with the Node v24.16.0 test suite and on the Google Docs home screen in Chrome on Windows on 2026-10-29.
 
 ## Nederlands
 
-Deze extensie werkt uitsluitend in de Google Docs-webapplicatie: op het startscherm (`docs.google.com/document/`), in de zoeksuggesties daarboven en in het venster `Bestand > Openen` vanuit Google Docs. Standaard verbergt ze daar Markdown-bestanden (`.md`, `.markdown`) en Microsoft Word-bestanden (`.docx`, `.doc`), zodat je tussen je gewone Google-documenten werkt.
+Deze extensie werkt alleen in de Google Docs-webapp: op het startscherm (`docs.google.com/document/`), in de zoeksuggesties daarboven en in het venster `Bestand > Openen` vanuit een document. Standaard verbergt ze daar Markdown-bestanden (`.md`, `.markdown`) en Word-bestanden (`.docx`, `.doc`), zodat je tussen je eigen Google-documenten werkt.
 
-Geopende documenten in de editor (`/document/d/...`), Google Drive zelf (`drive.google.com`), Google Sheets, Google Slides, het bijlagenvenster in Gmail en alle andere websites blijven volledig ongemoeid. De knop en popup verschijnen automatisch in het Nederlands wanneer Chrome op Nederlands staat. Zie `PUBLISHING.md` voor de stappen om een nieuwe versie in te pakken en te publiceren.
+Geopende documenten, Google Drive zelf, Sheets, Slides, het bijlagenvenster in Gmail en alle andere websites blijven ongemoeid. Er wordt niets verplaatst of verwijderd. De knop en de instellingen staan in het Nederlands als Chrome op Nederlands staat.
 
 ## Licence
 
-MIT, Sebastien Vanblaere. See `LICENSE` and `PRIVACY.md`.
+MIT, Sebastien Vanblaere. See `LICENSE` and [Privacy](https://seb-prjcts-be.github.io/google_docs_md_filter/docs/privacy.html).
 
 Independent browser extension for the Google Docs web interface; not affiliated with or endorsed by Google LLC.

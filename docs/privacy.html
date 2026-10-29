@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy - MD Block for Google Docs</title>
+  <meta name="description" content="MD Block for Google Docs collects nothing, sends nothing and changes nothing in Drive. Its settings stay in your browser.">
+  <link rel="icon" href="../icons/icon32.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav id="navbar">
+    <a class="nav-logo" href="../index.html">MD <span>Block</span></a>
+    <button class="nav-hamburger" aria-label="Toggle menu" onclick="this.closest('nav').classList.toggle('nav-open')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="install.html">Install</a></li>
+      <li><a href="guide.html">Guide</a></li>
+      <li><a href="privacy.html" class="active">Privacy</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://github.com/seb-prjcts-be/google_docs_md_filter" target="_blank">GitHub</a></li>
+    </ul>
+  </nav>
+  <main class="page">
+    <header class="page-header">
+      <div class="section-tag">Privacy policy &middot; last updated 2026-10-29</div>
+      <h1>Privacy</h1>
+      <p class="guide-intro">MD Block for Google Docs runs entirely in your browser, on <code>docs.google.com</code> and in the Google Docs file picker (<code>docs.google.com/picker</code> and <code>drive.google.com/picker</code>).</p>
+    </header>
+
+    <h2 id="data">Data collection and transmission</h2>
+    <ul>
+      <li>The extension does not collect, log, transmit or share personal information, document titles, document contents or browsing history.</li>
+      <li>The extension makes no external network requests and contains no analytics, telemetry or remote code.</li>
+      <li>The extension does not modify, move or delete any files in Google Drive. It only hides matching rows in the page (<code>display: none</code>).</li>
+    </ul>
+
+    <h2 id="settings">Local settings</h2>
+    <p>Your filter preferences (whether the filter is on, which file extensions are hidden, and whether the counter button is shown) are stored in your browser with <code>chrome.storage.local</code>. Removing the extension deletes them.</p>
+
+    <h2 id="permissions">Permissions</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Permission</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>storage</td><td>Keeps the settings above on this computer.</td></tr>
+          <tr><td>docs.google.com</td><td>Runs the filter on the Docs home screen and in the <code>File &gt; Open</code> picker. Open documents are excluded.</td></tr>
+          <tr><td>drive.google.com/picker</td><td>Runs the same filter when the picker is served from Drive. The rest of Drive is not included.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="check">Check it yourself</h2>
+    <p>The whole extension is about 1 800 lines of plain JavaScript in <a href="https://github.com/seb-prjcts-be/google_docs_md_filter/tree/main/src"><code>src/</code></a>, with no build step and no dependencies. What you read there is what Chrome runs.</p>
+
+    <h2 id="contact">Contact</h2>
+    <p>Questions about this policy: open an issue on <a href="https://github.com/seb-prjcts-be/google_docs_md_filter/issues">GitHub</a>.</p>
+    <p>The same text is in <a href="https://github.com/seb-prjcts-be/google_docs_md_filter/blob/main/PRIVACY.md"><code>PRIVACY.md</code></a>.</p>
+  </main>
+  <footer>
+    <p><a href="https://github.com/seb-prjcts-be/google_docs_md_filter" target="_blank">MD Block for Google Docs</a> &middot; <a href="privacy.html">Privacy</a> &middot; Sebastien Vanblaere &middot; <a href="https://prjcts.be" target="_blank">prjcts.be</a></p>
+    <p class="footer-sub">MIT License &middot; v0.1.0 &middot; Not affiliated with or endorsed by Google LLC</p>
+  </footer>
+</body>
+</html>

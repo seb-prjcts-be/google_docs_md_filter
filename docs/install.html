@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Install - MD Block for Google Docs</title>
+  <meta name="description" content="Load MD Block for Google Docs from a release zip or a clone in Chrome, Brave, Edge, Arc or Vivaldi.">
+  <link rel="icon" href="../icons/icon32.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav id="navbar">
+    <a class="nav-logo" href="../index.html">MD <span>Block</span></a>
+    <button class="nav-hamburger" aria-label="Toggle menu" onclick="this.closest('nav').classList.toggle('nav-open')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="install.html" class="active">Install</a></li>
+      <li><a href="guide.html">Guide</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://github.com/seb-prjcts-be/google_docs_md_filter" target="_blank">GitHub</a></li>
+    </ul>
+  </nav>
+  <main class="page">
+    <header class="page-header">
+      <div class="section-tag">Chrome extension &middot; v0.1.0</div>
+      <h1>Install</h1>
+      <p class="guide-intro">The extension is not in the Chrome Web Store yet. Until it is, you load it from source. That takes a minute and works in Chrome, Brave, Edge, Arc and Vivaldi.</p>
+    </header>
+
+    <h2 id="release">From a release</h2>
+    <ol class="step-list">
+      <li><p>Download the latest <code>md-block-v*.zip</code> from <a href="https://github.com/seb-prjcts-be/google_docs_md_filter/releases">Releases</a> and unzip it into a folder you will keep. Chrome reads the extension from that folder every time it starts.</p></li>
+      <li><p>Open <code>chrome://extensions</code>.</p></li>
+      <li><p>Turn on <strong>Developer mode</strong> in the top-right corner.</p></li>
+      <li><p>Click <strong>Load unpacked</strong> and choose the folder that holds <code>manifest.json</code>.</p></li>
+      <li><p>Open or reload <code>https://docs.google.com/document/</code>.</p></li>
+    </ol>
+    <p>If you run Google Docs as an installed app (PWA), the extension works there too.</p>
+
+    <h2 id="clone">From a clone</h2>
+    <pre><code>git clone https://github.com/seb-prjcts-be/google_docs_md_filter.git</code></pre>
+    <p>Then follow steps 2 to 5 above with the cloned folder. The folder also holds this site, the tests and the scripts; Chrome only reads what <code>manifest.json</code> names.</p>
+
+    <h2 id="check">Check that it works</h2>
+    <p>On the Docs home screen a small button appears in the bottom-left corner. It counts what is hidden on the current screen, for example <code>14 .md hidden</code>, or <code>0 files hidden</code> when nothing matched. Click it to show the hidden files for a while; click again to hide them.</p>
+    <p>The <strong>MD Block</strong> icon in the toolbar opens the settings. Chrome may tuck it under the puzzle piece; pin it there if you want it in sight.</p>
+
+    <h2 id="update">Update</h2>
+    <p>Replace the folder with the new release, or <code>git pull</code> in the clone. Then click the round arrow on the extension's card in <code>chrome://extensions</code> and reload the Docs tab.</p>
+
+    <h2 id="remove">Remove</h2>
+    <p>Click <strong>Remove</strong> on the extension's card in <code>chrome://extensions</code>. Chrome deletes the stored settings with it. Nothing in Drive changes, because nothing in Drive was changed in the first place.</p>
+
+    <h2 id="troubleshooting">If it does not work</h2>
+    <ul>
+      <li>No button on the home screen: check that the extension is switched on in <code>chrome://extensions</code>, then reload the Docs tab. The address should start with <code>docs.google.com/document/</code>.</li>
+      <li>No button inside a document: that is on purpose. The extension does not run in the editor. Choose <code>File &gt; Open</code> to see it work in the picker.</li>
+      <li>A native Google Doc is missing: its title probably ends in <code>.md</code> or <code>.docx</code>. The title is what the extension reads. Click the button to show it, or rename it.</li>
+      <li>Older documents do not appear: see <a href="guide.html#limits">Limits</a>.</li>
+    </ul>
+    <p><a href="guide.html">Continue with the Guide</a>.</p>
+  </main>
+  <footer>
+    <p><a href="https://github.com/seb-prjcts-be/google_docs_md_filter" target="_blank">MD Block for Google Docs</a> &middot; <a href="privacy.html">Privacy</a> &middot; Sebastien Vanblaere &middot; <a href="https://prjcts.be" target="_blank">prjcts.be</a></p>
+    <p class="footer-sub">MIT License &middot; v0.1.0 &middot; Not affiliated with or endorsed by Google LLC</p>
+  </footer>
+</body>
+</html>
