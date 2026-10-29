@@ -2,7 +2,7 @@
 
 ![The Google Docs home screen in CGA colours; Markdown and Word files disappear one by one and a counter says 7 files hidden](docs/images/overview.gif)
 
-**[Open site](https://seb-prjcts-be.github.io/google_docs_md_filter/)** · **[Install](https://seb-prjcts-be.github.io/google_docs_md_filter/docs/install.html)** · **[Guide](https://seb-prjcts-be.github.io/google_docs_md_filter/docs/guide.html)** · **[Privacy](https://seb-prjcts-be.github.io/google_docs_md_filter/docs/privacy.html)**
+**[Open site](https://seb-prjcts-be.github.io/google_docs_md_filter/)** · **[Install](https://seb-prjcts-be.github.io/google_docs_md_filter/docs/guide.html#install)** · **[Guide](https://seb-prjcts-be.github.io/google_docs_md_filter/docs/guide.html)** · **[Privacy](https://seb-prjcts-be.github.io/google_docs_md_filter/docs/privacy.html)**
 
 A small Chrome extension (Manifest V3) that hides Markdown (`.md`, `.markdown`) and Microsoft Word (`.docx`, `.doc`) files from the Google Docs home screen, its search suggestions and the `File > Open` dialog.
 
@@ -19,7 +19,7 @@ The extension is not in the Chrome Web Store yet. Load it from source in Chrome,
 3. Click **Load unpacked** and choose the folder that holds `manifest.json`.
 4. Open or reload `https://docs.google.com/document/`.
 
-A button in the bottom-left corner of the home screen counts what is hidden, for example `14 .md hidden`. Click it and the filter pauses in every Docs tab, so the files come back; click again to hide them. [Install](https://seb-prjcts-be.github.io/google_docs_md_filter/docs/install.html) covers updating, removing and what to check when nothing happens.
+A button in the bottom-left corner of the home screen counts what is hidden, for example `14 .md hidden`. Click it and the filter pauses in every Docs tab, so the files come back; click again to hide them. [Install](https://seb-prjcts-be.github.io/google_docs_md_filter/docs/guide.html#install) in the Guide covers updating, removing and what to check when nothing happens.
 
 ## Where it runs
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Guide - MD Block for Google Docs</title>
-  <meta name="description" content="Where MD Block runs, how it decides what to hide, the settings, the counter button and the limits.">
+  <meta name="description" content="Install MD Block for Google Docs from source, where it runs, how it decides what to hide, the settings, the counter button and the limits.">
   <link rel="icon" href="../icons/icon32.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -16,10 +16,9 @@
     <button class="nav-hamburger" aria-label="Toggle menu" onclick="this.closest('nav').classList.toggle('nav-open')"><span></span><span></span><span></span></button>
     <ul class="nav-links">
       <li><a href="../index.html">Home</a></li>
-      <li><a href="install.html">Install</a></li>
       <li><a href="guide.html" class="active">Guide</a></li>
       <li><a href="privacy.html">Privacy</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="../index.html#about">About</a></li>
       <li><a href="https://github.com/seb-prjcts-be/google_docs_md_filter" target="_blank">GitHub</a></li>
     </ul>
   </nav>
@@ -27,11 +26,32 @@
     <header class="page-header">
       <div class="section-tag">Chrome extension &middot; v0.1.0</div>
       <h1>Guide</h1>
-      <p class="guide-intro">The extension looks at the Docs home screen, finds rows whose file name ends in a filtered extension and hides them in the page. Drive is not asked to do anything.</p>
+      <p class="guide-intro">The extension looks at the Docs home screen, finds rows whose file name ends in a filtered extension and hides them in the page.</p>
     </header>
 
+    <h2 id="install">Install</h2>
+    <p>The extension is not in the Chrome Web Store yet, so you load it from source. This works in Chrome, Brave, Edge, Arc and Vivaldi.</p>
+    <ol class="step-list">
+      <li><p>Download the latest <code>md-block-v*.zip</code> from <a href="https://github.com/seb-prjcts-be/google_docs_md_filter/releases">Releases</a> and unzip it into a folder you will keep; Chrome reads the extension from that folder every time it starts. Or clone <code>https://github.com/seb-prjcts-be/google_docs_md_filter.git</code>.</p></li>
+      <li><p>Open <code>chrome://extensions</code>.</p></li>
+      <li><p>Turn on <strong>Developer mode</strong> in the top-right corner.</p></li>
+      <li><p>Click <strong>Load unpacked</strong> and choose the folder that holds <code>manifest.json</code>.</p></li>
+      <li><p>Open or reload <code>https://docs.google.com/document/</code>.</p></li>
+    </ol>
+    <p>A small button appears in the bottom-left corner of the home screen. It counts what is hidden on the current screen, for example <code>14 .md hidden</code>, or <code>0 files hidden</code> when nothing matched. The <strong>MD Block</strong> icon in the toolbar opens the settings; Chrome may tuck it under the puzzle piece. If you run Google Docs as an installed app (PWA), the extension works there too.</p>
+    <p><strong>Update:</strong> replace the folder with the new release, or <code>git pull</code> in the clone, then click the round arrow on the extension's card in <code>chrome://extensions</code> and reload the Docs tab. <strong>Remove:</strong> click <strong>Remove</strong> on that card; Chrome deletes the stored settings with it.</p>
+
+    <h3 id="troubleshooting">If it does not work</h3>
+    <ul>
+      <li>No button on the home screen: check that the extension is switched on in <code>chrome://extensions</code>, then reload the Docs tab. The address should start with <code>docs.google.com/document/</code>.</li>
+      <li>No button inside a document: the extension does not run in the editor. Choose <code>File &gt; Open</code> to see it work in the picker.</li>
+      <li>A native Google Doc is missing: its title probably ends in <code>.md</code> or <code>.docx</code>. The title is what the extension reads. Click the button to show it, or rename it.</li>
+      <li>The <strong>Enable Markdown</strong> option under <code>Tools &gt; Preferences</code> in Docs is about typing Markdown inside a document. It does not change which files the home screen lists.</li>
+      <li>Older documents do not appear: see <a href="#limits">Limits</a>.</li>
+    </ul>
+
     <h2 id="where">Where it runs</h2>
-    <p>The addresses come from <code>manifest.json</code>. Anything not on this list is never touched.</p>
+    <p>The addresses come from <code>manifest.json</code>.</p>
     <figure style="width:min(100%,600px);margin:1.5rem auto 2rem"><picture><source srcset="images/05-not-here.png" media="(prefers-reduced-motion: reduce)"><img src="images/05-not-here.gif" width="600" height="400" style="display:block;width:100%;height:auto;image-rendering:pixelated;border:1px solid rgba(0,0,0,0.2)" alt="Five small windows in CGA colours. Drive, Sheets, a Gmail message with notes.md attached and an open document keep every file. In the Docs home screen three .md rows disappear and a button counts 3 .md hidden."></picture></figure>
     <div class="table-wrap">
       <table>
@@ -45,8 +65,8 @@
         </tbody>
       </table>
     </div>
-    <p>Open documents (<code>/document/d/...</code>) are excluded twice: once in <code>exclude_matches</code> in the manifest and once in <code>detectSurface()</code> in <code>src/filter-core.js</code>. Google Drive itself, Sheets, Slides, Forms and the attachment picker in Gmail keep showing every file, so you can still attach a <code>.md</code> to an email.</p>
-    <p>Inside a document, <code>File &gt; Open</code> opens the picker in a frame of its own. The filter runs in that frame and nowhere else on the page; the button appears in the dialog once something is hidden.</p>
+    <p>Open documents (<code>/document/d/...</code>) are excluded in <code>exclude_matches</code> in the manifest and again in <code>detectSurface()</code> in <code>src/filter-core.js</code>. Google Drive itself, Sheets, Slides, Forms and the attachment picker in Gmail keep showing every file, so you can still attach a <code>.md</code> to an email.</p>
+    <p>Inside a document, <code>File &gt; Open</code> opens the picker in a frame of its own. The filter runs in that frame; the button appears in the dialog once something is hidden.</p>
     <figure style="width:min(100%,600px);margin:1.5rem auto 2rem"><picture><source srcset="images/02-file-open.png" media="(prefers-reduced-motion: reduce)"><img src="images/02-file-open.gif" width="600" height="400" style="display:block;width:100%;height:auto;image-rendering:pixelated;border:1px solid rgba(0,0,0,0.2)" alt="An open document with the Open a file dialog over it, in CGA colours. In the dialog's Recent list, Markdown and Word rows disappear one by one and a button in the dialog counts 6 files hidden. The document behind it does not change."></picture></figure>
 
     <h2 id="how">How it decides</h2>
@@ -88,7 +108,6 @@
       <li>The extension hides what Google has already loaded. When many <code>.md</code> files sit at the top of Recent Documents, it nudges the page up to fifteen times so Docs loads older documents into view. If hundreds come before the first native document, scroll once by hand to fetch the next batch.</li>
       <li>A native Google Doc whose title ends in <code>.md</code> or <code>.docx</code> is hidden too. The title is what the extension reads.</li>
       <li>Google changes the Docs interface now and then. When it does, the selectors may need an update. The tests in <code>test/filter.test.js</code> cover the structures seen so far.</li>
-      <li>This is a browser-side workaround. It does not switch off the way Drive shows Markdown and Word files in Docs, and it does not change anything in your account.</li>
     </ul>
 
     <h2 id="develop">Test and package</h2>
