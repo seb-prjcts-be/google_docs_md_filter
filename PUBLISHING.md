@@ -105,4 +105,4 @@ Google vraagt voor elk recht een korte toelichting in het Engels:
 - **Data usage**:
   Vink aan dat de extensie géén gebruikersgegevens verzamelt of verstuurt, en zet de drie verplichte verklaringen onderaan aan.
 - **Privacy policy URL** (als je die wilt invullen):
-  `https://github.com/seb-prjcts-be/google_docs_md_filter/blob/main/PRIVACY.md`
+  `https://seb-prjcts-be.github.io/google_docs_md_filter/docs/privacy.html` (zodra GitHub Pages aanstaat; anders `https://github.com/seb-prjcts-be/google_docs_md_filter/blob/main/PRIVACY.md`)

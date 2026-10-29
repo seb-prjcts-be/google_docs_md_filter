@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MD Block for Google Docs - hide .md files in Docs, keep them in Drive</title>
+  <meta name="description" content="A small Chrome extension that hides Markdown and Word files from the Google Docs home screen, search suggestions and File > Open. Nothing in Drive is moved or deleted.">
+  <meta property="og:title" content="MD Block for Google Docs">
+  <meta property="og:description" content="Hides Markdown and Word files from the Google Docs home screen and File > Open. Drive keeps every file.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://seb-prjcts-be.github.io/google_docs_md_filter/">
+  <meta property="og:image" content="https://seb-prjcts-be.github.io/google_docs_md_filter/docs/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MD Block for Google Docs">
+  <meta name="twitter:description" content="Hides Markdown and Word files from the Google Docs home screen and File > Open. Drive keeps every file.">
+  <meta name="twitter:image" content="https://seb-prjcts-be.github.io/google_docs_md_filter/docs/images/og-image.png">
+  <link rel="icon" href="icons/icon32.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="docs/style.css">
+  <link rel="stylesheet" href="docs/home-overview.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a class="nav-logo" href="index.html">MD <span>Block</span></a>
+    <button class="nav-hamburger" aria-label="Toggle menu" onclick="this.closest('nav').classList.toggle('nav-open')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="#hero" class="active">Home</a></li>
+      <li><a href="docs/install.html">Install</a></li>
+      <li><a href="docs/guide.html">Guide</a></li>
+      <li><a href="docs/privacy.html">Privacy</a></li>
+      <li><a href="docs/about.html">About</a></li>
+      <li><a href="https://github.com/seb-prjcts-be/google_docs_md_filter" target="_blank">GitHub</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO: the home screen before and after -->
+  <section id="hero">
+    <div class="hero-overlay">
+      <div class="hero-text">
+        <figure class="home-overview">
+          <picture>
+            <source srcset="docs/images/og-image.png" media="(prefers-reduced-motion: reduce)">
+            <img src="docs/images/overview.gif" width="600" height="400" style="image-rendering:pixelated;border:1px solid rgba(0,0,0,0.2)" alt="The Google Docs home screen in CGA colours. In the list of recent documents, Markdown and Word files are struck through one by one and disappear; the native documents move up and a button in the bottom-left corner counts 7 files hidden.">
+          </picture>
+        </figure>
+        <div class="hero-badge">Chrome extension &middot; Manifest V3 &middot; v0.1.0</div>
+        <h1>Docs without <span class="accent">.md</span></h1>
+        <p class="hero-sub">Markdown and Word files leave the Google Docs home screen. In Drive they stay where they are.</p>
+        <div class="cta-row">
+          <a href="docs/install.html" class="cta-btn">Install &#8594;</a>
+          <a href="docs/guide.html" class="cta-btn secondary">Guide &#8594;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHERE IT RUNS -->
+  <section class="section section-dark" id="where">
+    <div class="section-header">
+      <div class="section-tag">Where it runs</div>
+      <h2>Three places, nothing else</h2>
+      <p>A synced folder in Drive puts every <code>.md</code> and <code>.docx</code> on the Docs home screen, next to your real documents. When a coding tool touches a few dozen Markdown files a day, the documents you wanted are a long scroll away. The extension hides those rows in the page with <code>display: none</code>; the files themselves are not touched.</p>
+    </div>
+    <ol class="pipeline-list">
+      <li><span>01</span><strong>Home screen</strong><p>Grid cards and list rows on <code>docs.google.com/document/</code>. A date section such as <em>Yesterday</em> folds away when everything in it is hidden.</p></li>
+      <li><span>02</span><strong>Search suggestions</strong><p>The autocomplete list under the search bar at the top of the home screen.</p></li>
+      <li><span>03</span><strong>File &gt; Open</strong><p>The picker dialog you open from inside a document. Only the dialog; the document itself is left alone.</p></li>
+      <li><span>&ndash;</span><strong>Not here</strong><p>Open documents, Google Drive, Sheets, Slides, Forms, the attachment picker in Gmail and every other website. <a href="docs/guide.html#where">Where it runs</a> has the exact addresses.</p></li>
+    </ol>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><a href="https://github.com/seb-prjcts-be/google_docs_md_filter" target="_blank">MD Block for Google Docs</a> &middot; <a href="docs/privacy.html">Privacy</a> &middot; Sebastien Vanblaere &middot; <a href="https://prjcts.be" target="_blank">prjcts.be</a></p>
+    <p class="footer-sub">MIT License &middot; v0.1.0 &middot; Not affiliated with or endorsed by Google LLC</p>
+  </footer>
+
+</body>
+</html>
