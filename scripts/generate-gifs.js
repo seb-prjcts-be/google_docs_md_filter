@@ -29,7 +29,7 @@ var FILES = [
   ["invoice-template.doc", "OCT 28"],
   ["Plotter log", "OCT 27"],
   ["Workshop handout", "OCT 25"],
-  ["Budget 2027", "OCT 24"]
+  ["Recipe for bread", "OCT 21"]
 ];
 
 var rows = P.makeRows(FILES);
@@ -84,13 +84,14 @@ function fileOpen(seconds) {
   P.text("SHARE", 258, 6, C.WHITE);
   P.dottedLine(0, 299, 18, C.LINE);
   P.outline(40, 24, 219, 145, C.LINE);
+  P.text("DEAR SCHOOL,", 56, 25, C.BLACK); // the letter in progress, above the dialog
   for (var y = 40; y < 166; y += 6) {
     P.dottedLine(56, y % 18 === 4 ? 160 : 240, y, C.MUTED);
   }
   // The dialog, with its shadow.
-  P.outline(55, 31, 190, 132, C.LINE);
-  P.outline(54, 30, 190, 132, C.MUTED);
-  P.box(55, 31, 189, 131, C.WHITE);
+  P.outline(55, 33, 190, 130, C.LINE);
+  P.outline(54, 32, 190, 130, C.MUTED);
+  P.box(55, 33, 189, 129, C.WHITE);
   P.text("OPEN A FILE", 62, 36, C.BLACK);
   P.text("RECENT", 62, 46, C.BLACK);
   P.hline(62, 84, 53, C.BLUE);
@@ -166,9 +167,9 @@ var SETTINGS_FILES = [
   ["notes.txt", "12:12"],
   ["Exhibition text", "11:40"],
   ["contract-old.docx", "11:12"],
-  ["thesis.tex", "10:50"],
   ["Reading list", "10:31"],
   ["status.md", "09:47"],
+  ["thesis.tex", "03:12"],
   ["Letter to the school", "OCT 28"],
   ["Plotter log", "OCT 27"],
   ["Workshop handout", "OCT 25"],
