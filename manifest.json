@@ -1,0 +1,62 @@
+{
+  "manifest_version": 3,
+  "default_locale": "en",
+  "name": "__MSG_extName__",
+  "version": "0.1.0",
+  "description": "__MSG_extDescription__",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "__MSG_actionTitle__",
+    "default_popup": "src/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png"
+    }
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://docs.google.com/",
+        "https://docs.google.com/u/*",
+        "https://docs.google.com/document/*",
+        "https://docs.google.com/a/*/document/*"
+      ],
+      "exclude_matches": [
+        "https://docs.google.com/document/d/*",
+        "https://docs.google.com/document/u/*/d/*",
+        "https://docs.google.com/a/*/document/d/*",
+        "https://docs.google.com/a/*/document/u/*/d/*"
+      ],
+      "js": [
+        "src/filter-core.js",
+        "src/content.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": false
+    },
+    {
+      "matches": [
+        "https://docs.google.com/picker*",
+        "https://drive.google.com/picker*"
+      ],
+      "js": [
+        "src/filter-core.js",
+        "src/content.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ]
+}

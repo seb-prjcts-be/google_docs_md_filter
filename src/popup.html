@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MD Block for Google Docs</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div>
+        <h1 class="title" data-i18n="extName">MD Block for Google Docs</h1>
+        <p id="tab-status" class="status" data-i18n="popupStatusDefault">
+          Only active on the Google Docs home screen
+        </p>
+      </div>
+      <label class="switch" data-i18n-title="popupToggleTitle" title="Turn filter on or off">
+        <input id="toggle-enabled" type="checkbox" checked />
+        <span class="slider"></span>
+      </label>
+    </header>
+
+    <section class="section">
+      <h2 class="section-title" data-i18n="popupExtensionsHeading">Extensions to hide</h2>
+      <div id="preset-list" class="preset-list"></div>
+
+      <form id="custom-form" class="custom-form" autocomplete="off">
+        <input
+          id="custom-input"
+          class="custom-input"
+          type="text"
+          data-i18n-placeholder="customInputPlaceholder"
+          data-i18n-aria-label="customInputAria"
+          placeholder="Extra extension, e.g. tex or csv"
+          maxlength="25"
+          aria-label="Add extra extension"
+        />
+        <button class="custom-add" type="submit" data-i18n="customAddButton">Add</button>
+      </form>
+      <p id="custom-error" class="custom-error" hidden></p>
+      <div id="custom-chips" class="custom-chips"></div>
+    </section>
+
+    <section class="section">
+      <label class="checkbox-row">
+        <input id="toggle-pill" type="checkbox" checked />
+        <span data-i18n="popupShowPillLabel">
+          Show counter button in the bottom-left corner of Google Docs
+        </span>
+      </label>
+    </section>
+
+    <footer class="footer" data-i18n="popupFooter">
+      Runs only in Google Docs (home screen, search bar, and File &gt; Open). Open documents, Google Drive, Sheets, Slides, Gmail, and other sites remain untouched.
+    </footer>
+
+    <script src="filter-core.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

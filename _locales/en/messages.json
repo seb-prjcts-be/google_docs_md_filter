@@ -1,0 +1,104 @@
+{
+  "extName": {
+    "message": "MD Block for Google Docs"
+  },
+  "extDescription": {
+    "message": "Hides Markdown and Microsoft Word files from the Google Docs home screen, search suggestions, and File > Open dialog."
+  },
+  "actionTitle": {
+    "message": "MD Block for Google Docs"
+  },
+  "badgeOff": {
+    "message": "OFF"
+  },
+  "pillHiddenMd": {
+    "message": "$1 .md hidden"
+  },
+  "pillHiddenWord": {
+    "message": "$1 Word hidden"
+  },
+  "pillHiddenFilesSingular": {
+    "message": "1 file hidden"
+  },
+  "pillHiddenFilesPlural": {
+    "message": "$1 files hidden"
+  },
+  "pillShownMd": {
+    "message": "$1 .md shown · hide"
+  },
+  "pillShownWord": {
+    "message": "$1 Word shown · hide"
+  },
+  "pillShownFilesSingular": {
+    "message": "1 file shown · hide"
+  },
+  "pillShownFilesPlural": {
+    "message": "$1 files shown · hide"
+  },
+  "pillPausedZero": {
+    "message": "Filter paused"
+  },
+  "pillTitleActive": {
+    "message": "Click to show hidden files temporarily"
+  },
+  "pillTitlePaused": {
+    "message": "Click to hide filtered files again"
+  },
+  "popupStatusDefault": {
+    "message": "Only active on the Google Docs home screen"
+  },
+  "popupStatusPaused": {
+    "message": "Filter paused"
+  },
+  "popupStatusOnTab": {
+    "message": "On this tab: $1"
+  },
+  "popupToggleTitle": {
+    "message": "Turn filter on or off"
+  },
+  "popupExtensionsHeading": {
+    "message": "File types to hide"
+  },
+  "presetNoteMd": {
+    "message": "Markdown files"
+  },
+  "presetNoteWord": {
+    "message": "Microsoft Word"
+  },
+  "presetNoteTxt": {
+    "message": "Plain text"
+  },
+  "presetNoteJson": {
+    "message": "JSON and log lines"
+  },
+  "presetNoteYaml": {
+    "message": "YAML config"
+  },
+  "presetNoteToml": {
+    "message": "TOML config"
+  },
+  "presetNoteLog": {
+    "message": "Log files"
+  },
+  "customInputPlaceholder": {
+    "message": "Extra extension, e.g. tex or csv"
+  },
+  "customInputAria": {
+    "message": "Add extra extension"
+  },
+  "customAddButton": {
+    "message": "Add"
+  },
+  "customErrorInvalid": {
+    "message": "Use letters, digits, hyphen, or underscore only."
+  },
+  "chipRemoveLabel": {
+    "message": "Remove .$1"
+  },
+  "popupShowPillLabel": {
+    "message": "Show counter button in the bottom-left corner of Google Docs"
+  },
+  "popupFooter": {
+    "message": "Runs only in Google Docs (home screen, search bar, and File > Open). Open documents, Google Drive, Sheets, Slides, Gmail, and other sites remain untouched."
+  }
+}

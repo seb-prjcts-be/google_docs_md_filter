@@ -1,0 +1,104 @@
+{
+  "extName": {
+    "message": "MD Block voor Google Docs"
+  },
+  "extDescription": {
+    "message": "Verbergt Markdown- en Microsoft Word-bestanden uit het startscherm, de zoeksuggesties en Bestand > Openen in Google Docs."
+  },
+  "actionTitle": {
+    "message": "MD Block voor Google Docs"
+  },
+  "badgeOff": {
+    "message": "UIT"
+  },
+  "pillHiddenMd": {
+    "message": "$1 .md verborgen"
+  },
+  "pillHiddenWord": {
+    "message": "$1 Word verborgen"
+  },
+  "pillHiddenFilesSingular": {
+    "message": "1 bestand verborgen"
+  },
+  "pillHiddenFilesPlural": {
+    "message": "$1 bestanden verborgen"
+  },
+  "pillShownMd": {
+    "message": "$1 .md getoond · verberg"
+  },
+  "pillShownWord": {
+    "message": "$1 Word getoond · verberg"
+  },
+  "pillShownFilesSingular": {
+    "message": "1 bestand getoond · verberg"
+  },
+  "pillShownFilesPlural": {
+    "message": "$1 bestanden getoond · verberg"
+  },
+  "pillPausedZero": {
+    "message": "Filter gepauzeerd"
+  },
+  "pillTitleActive": {
+    "message": "Klik om verborgen bestanden tijdelijk te tonen"
+  },
+  "pillTitlePaused": {
+    "message": "Klik om gefilterde bestanden weer te verbergen"
+  },
+  "popupStatusDefault": {
+    "message": "Alleen actief op het Google Docs-startscherm"
+  },
+  "popupStatusPaused": {
+    "message": "Filter gepauzeerd"
+  },
+  "popupStatusOnTab": {
+    "message": "Op dit tabblad: $1"
+  },
+  "popupToggleTitle": {
+    "message": "Filter in- of uitschakelen"
+  },
+  "popupExtensionsHeading": {
+    "message": "Bestandstypes verbergen"
+  },
+  "presetNoteMd": {
+    "message": "Markdown-bestanden"
+  },
+  "presetNoteWord": {
+    "message": "Microsoft Word"
+  },
+  "presetNoteTxt": {
+    "message": "Platte tekst"
+  },
+  "presetNoteJson": {
+    "message": "JSON en logregels"
+  },
+  "presetNoteYaml": {
+    "message": "YAML-configuratie"
+  },
+  "presetNoteToml": {
+    "message": "TOML-configuratie"
+  },
+  "presetNoteLog": {
+    "message": "Logbestanden"
+  },
+  "customInputPlaceholder": {
+    "message": "Extra extensie, bijv. tex of csv"
+  },
+  "customInputAria": {
+    "message": "Extra extensie toevoegen"
+  },
+  "customAddButton": {
+    "message": "Toevoegen"
+  },
+  "customErrorInvalid": {
+    "message": "Gebruik alleen letters, cijfers, koppelteken of underscore."
+  },
+  "chipRemoveLabel": {
+    "message": ".$1 verwijderen"
+  },
+  "popupShowPillLabel": {
+    "message": "Teller-knop tonen linksonder in Google Docs"
+  },
+  "popupFooter": {
+    "message": "Werkt alleen in Google Docs (startscherm, zoekbalk en Bestand > Openen). Geopende documenten, Google Drive, Sheets, Slides, Gmail en andere sites blijven ongemoeid."
+  }
+}
