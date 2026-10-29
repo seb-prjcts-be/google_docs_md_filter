@@ -32,6 +32,7 @@
 
     <h2 id="where">Where it runs</h2>
     <p>The addresses come from <code>manifest.json</code>. Anything not on this list is never touched.</p>
+    <figure style="width:min(100%,600px);margin:1.5rem auto 2rem"><picture><source srcset="images/05-not-here.png" media="(prefers-reduced-motion: reduce)"><img src="images/05-not-here.gif" width="600" height="400" style="display:block;width:100%;height:auto;image-rendering:pixelated;border:1px solid rgba(0,0,0,0.2)" alt="Five small windows in CGA colours. Drive, Sheets, a Gmail message with notes.md attached and an open document keep every file. In the Docs home screen three .md rows disappear and a button counts 3 .md hidden."></picture></figure>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Address</th><th>What</th></tr></thead>
@@ -45,6 +46,8 @@
       </table>
     </div>
     <p>Open documents (<code>/document/d/...</code>) are excluded twice: once in <code>exclude_matches</code> in the manifest and once in <code>detectSurface()</code> in <code>src/filter-core.js</code>. Google Drive itself, Sheets, Slides, Forms and the attachment picker in Gmail keep showing every file, so you can still attach a <code>.md</code> to an email.</p>
+    <p>Inside a document, <code>File &gt; Open</code> opens the picker in a frame of its own. The filter runs in that frame and nowhere else on the page; the button appears in the dialog once something is hidden.</p>
+    <figure style="width:min(100%,600px);margin:1.5rem auto 2rem"><picture><source srcset="images/02-file-open.png" media="(prefers-reduced-motion: reduce)"><img src="images/02-file-open.gif" width="600" height="400" style="display:block;width:100%;height:auto;image-rendering:pixelated;border:1px solid rgba(0,0,0,0.2)" alt="An open document with the Open a file dialog over it, in CGA colours. In the dialog's Recent list, Markdown and Word rows disappear one by one and a button in the dialog counts 6 files hidden. The document behind it does not change."></picture></figure>
 
     <h2 id="how">How it decides</h2>
     <p>For every card or row, <code>classifyItemElement()</code> looks for the file name, in this order: the title element, its title or aria-label attribute, tooltips, inline labels, and the row's own aria-label. When the name ends in a filtered extension, the row gets <code>display: none</code>. When no name is found, a Markdown or Word MIME type, icon or badge is enough.</p>
@@ -52,7 +55,8 @@
     <p>A date section such as <em>Yesterday</em> folds away when every item in it is hidden, unless its header holds the sort or view buttons.</p>
 
     <h2 id="settings">Settings</h2>
-    <p>Click the <strong>MD Block</strong> icon in the toolbar.</p>
+    <p>Click the <strong>MD Block</strong> icon in the toolbar. A change applies at once in every open Docs tab.</p>
+    <figure style="width:min(100%,600px);margin:1.5rem auto 2rem"><picture><source srcset="images/04-settings.png" media="(prefers-reduced-motion: reduce)"><img src="images/04-settings.gif" width="600" height="400" style="display:block;width:100%;height:auto;image-rendering:pixelated;border:1px solid rgba(0,0,0,0.2)" alt="The settings popup next to the Docs list, in CGA colours. Ticking .txt makes notes.txt disappear from the list; typing tex and clicking Add makes thesis.tex disappear. The counter goes from 3 to 5 files hidden."></picture></figure>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Setting</th><th>Default</th><th>What it does</th></tr></thead>
@@ -73,7 +77,8 @@
     <p>Settings are kept in <code>chrome.storage.local</code>, on this computer only. See <a href="privacy.html">Privacy</a>.</p>
 
     <h2 id="counter">The counter button</h2>
-    <p>The button counts what is hidden on the screen you are looking at. It says <code>14 .md hidden</code> when only Markdown is hidden, <code>3 Word hidden</code> when only Word is, and <code>17 files hidden</code> for a mix. Click it and the files come back, with the label <code>17 files shown · hide</code>; click again to hide them. In the <code>File &gt; Open</code> dialog the button stays out of sight until something is hidden.</p>
+    <p>The button counts what is hidden on the screen you are looking at. It says <code>14 .md hidden</code> when only Markdown is hidden, <code>3 Word hidden</code> when only Word is, and <code>17 files hidden</code> for a mix. Click it and the filter pauses, in this tab and every other Docs tab: the files come back and the label reads <code>17 files shown · hide</code>. Click again and they are hidden again. It is the same switch as the one in the popup. In the <code>File &gt; Open</code> dialog the button stays out of sight until something is hidden.</p>
+    <figure style="width:min(100%,600px);margin:1.5rem auto 2rem"><picture><source srcset="images/03-counter-button.png" media="(prefers-reduced-motion: reduce)"><img src="images/03-counter-button.gif" width="600" height="400" style="display:block;width:100%;height:auto;image-rendering:pixelated;border:1px solid rgba(0,0,0,0.2)" alt="The Docs list in CGA colours with the counter button bottom left. A pointer clicks it: the hidden rows come back and the label reads 7 files shown · hide, in orange. A second click hides them again and the label reads 7 files hidden."></picture></figure>
 
     <h2 id="languages">Languages</h2>
     <p>The button and the settings follow the browser language. English and Dutch are included in <code>_locales/</code>; other languages fall back to English. A new language is one <code>messages.json</code> file; a pull request is welcome.</p>
@@ -91,10 +96,10 @@
     <pre><code>node --test test/filter.test.js</code></pre>
     <p>A clean zip for the Chrome Web Store or a GitHub release, in <code>dist/</code>. It holds <code>manifest.json</code>, <code>_locales/</code>, <code>icons/</code> and <code>src/</code>, nothing else:</p>
     <pre><code>node scripts/pack.js</code></pre>
-    <p>The icons and the animation on the home page are drawn by scripts as well:</p>
+    <p>The icons and the five animations on this site are drawn by scripts as well:</p>
     <pre><code>node scripts/generate-icons.js
-node scripts/generate-overview-gif.js</code></pre>
-    <p>The animation uses <code>src/filter-core.js</code> to decide which rows disappear and what the button says; the file names in it are invented.</p>
+node scripts/generate-gifs.js</code></pre>
+    <p>The animations ask <code>src/filter-core.js</code> which rows disappear and what the button says; the file names in them are invented. Every Google colour is replaced by the nearest of the sixteen CGA colours, measured in CIELAB, so the plus keeps its four colours and the paused button its orange. <code>scripts/cga-pixels.js</code> holds the shared drawing layer.</p>
     <p>Tested with the Node v24.16.0 test suite and on the Google Docs home screen in Chrome on Windows on 2026-10-29.</p>
   </main>
   <footer>
